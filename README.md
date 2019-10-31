@@ -9,7 +9,7 @@ Click the Collections tab, then go to the collection, and there will be a link t
 
 2) `ls -l | awk '{print $9}' > ~/myList.list`
 
-3) Run `python manifest_file_generator.py "/path/to/myList.list" "/path/to/httplinks.csv" manifest_type replace_str > manifest.csv`
+3) Run `python manifest_file_generator.py "/path/to/myList.list" "/path/to/httplinks.csv" manifest_type substring-to-replace > manifest.csv`
 
 What this does is it looks through your file of things-to-upload,
 and it uses the "thing" as a search string to search for that entry
