@@ -5,6 +5,17 @@ PURPOSE: FIND match in PathDB httplinks.csv, and CREATE manifest.csv
 
 ### Usage
 1) Download httplinks.csv from PathDB
-2) `ls -l | awk '{print $9}' > ~/myList.list  # Make sure no blank lines or 'extra' files that don't belong.`
-3) Run `python manifest_file_generator.py "/path/to/myList.list" "/path/to/httplinks.csv" [manifest_type <map | image | segmentation>]`
-4) Redirect output to file
+Click the Collections tab, then go to the collection, and there will be a link that says "download".
+
+2) `ls -l | awk '{print $9}' > ~/myList.list`
+
+3) Run `python manifest_file_generator.py "/path/to/myList.list" "/path/to/httplinks.csv" manifest_type replace_str > manifest.csv`
+
+What this does is it looks through your file of things-to-upload,
+and it uses the "thing" as a search string to search for that entry
+in httplinks.csv
+
+If there is a part of the filename that needs to be stripped out
+(for example, file ends in "-test")
+then pass "-test" as the last argument.
+"-test" will be stripped out of the input file name so we can find its match in httplinks.csv
