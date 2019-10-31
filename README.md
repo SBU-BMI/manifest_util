@@ -1,7 +1,7 @@
 # quip manifest file generator
-PURPOSE: FIND IN PathDB httplinks.csv, CREATE manifest.csv
+PURPOSE: FIND match in PathDB httplinks.csv, and CREATE manifest.csv
 
-#### Disclaimer: check the output file for accuracy. If not accurate, tweak python file to your needs.
+#### Disclaimer: check the output file for accuracy. If not accurate, tweak Python file to your needs.
 
 ### Usage
 1) Download httplinks.csv from PathDB
