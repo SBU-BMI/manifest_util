@@ -13,7 +13,7 @@ Click the Collections tab, then go to the collection, and there will be a link t
 2) Run the following command, replacing the (4) input parameters with your appropriate information:
 
 ```
-python manifest_file_generator.py "/path/to/upload_dir" "/path/to/httplinks.csv" "manifest_type" [map | segmentation] "substring_to_replace" > manifest.csv
+python file_gen_util.py "/path/to/upload_dir" "/path/to/httplinks.csv" "manifest_type" [map | segmentation] "substring_to_replace" > manifest.csv
 ```
 
 What this does is it looks through your directory of things-to-upload, and it uses each "thing" as a search string to find a matching entry in httplinks.csv
