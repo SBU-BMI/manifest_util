@@ -4,13 +4,13 @@ PURPOSE: FIND match in PathDB httplinks.csv, and CREATE manifest.csv<br>
 
 #### Disclaimer: 
 1.  Check the output file for accuracy.
-2.  This program (and PathDB) are a work in progress and will be updated accordingly.
+2.  This program (as well as PathDB) are a work in progress. Updates will be made accordingly.
 
 ### Usage
 1) Download httplinks.csv from PathDB
 Click the Collections tab, then go to the collection, and there will be a link that says "download".
 
-2) Run the following command, replacing the (4) input parameters with the appropriate information:
+2) Run the following command, replacing the (4) input parameters with your appropriate information:
 
 ```
 python manifest_file_generator.py "/path/to/upload_dir" "/path/to/httplinks.csv" "manifest_type" [map | image | segmentation] "substring_to_replace" > manifest.csv
