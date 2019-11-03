@@ -1,14 +1,20 @@
 # manifest file generator
 PURPOSE: FIND match in PathDB httplinks.csv, and CREATE manifest.csv<br>
-*Note: Depending on what version of PathDB you're using, downloaded file will initially be named `httplinks.csv` or `manifest.csv`*
+*Note: Depending on what version of PathDB you're using, downloaded file will initially be named `httplinks.csv` or `manifest.csv`.  This "manifest.csv" is not the manifest!  Please rename.*
 
-#### Disclaimer: check the output file for accuracy. If not accurate, tweak Python file to your needs.
+#### Disclaimer: 
+1.  Check the output file for accuracy.
+2.  This program (and PathDB) are a work in progress and will be updated accordingly.
 
 ### Usage
 1) Download httplinks.csv from PathDB
 Click the Collections tab, then go to the collection, and there will be a link that says "download".
 
-2) Run `python manifest_file_generator.py "/path/to/upload_dir" "/path/to/httplinks.csv" manifest_type [map | image | segmentation] substring_to_replace > manifest.csv`
+2) Run the following command, replacing the (4) input parameters with the appropriate information:
+
+```
+python manifest_file_generator.py "/path/to/upload_dir" "/path/to/httplinks.csv" "manifest_type" [map | image | segmentation] "substring_to_replace" > manifest.csv
+```
 
 What this does is it looks through your directory of things-to-upload, and it uses each "thing" as a search string to find a matching entry in httplinks.csv
 
