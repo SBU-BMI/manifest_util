@@ -32,8 +32,8 @@ def main(my_args):
         if manifest_type == 'map':
             print('studyid,clinicaltrialsubjectid,imageid,filename')
 
-        if manifest_type == 'image':
-            print('path,studyid,clinicaltrialsubjectid,imageid')
+        # if manifest_type == 'image':
+            # print('path,studyid,clinicaltrialsubjectid,imageid')
 
         for line_a in my_list:
             if replace_str:
@@ -49,8 +49,9 @@ def main(my_args):
                             print(row[1] + "," + row[2] + "," + row[3] + "," + line_a.strip())
                         if manifest_type == 'segmentation':
                             print(line_a.strip() + "," + row[1] + "," + row[2] + "," + row[3])
-                        if manifest_type == 'image':
-                            print(row[1] + "," + row[2] + "," + row[3] + "," + line_a.strip())
+                        # No images, no httplinks.csv file!
+                        # if manifest_type == 'image':
+                            # print(row[1] + "," + row[2] + "," + row[3] + "," + line_a.strip())
                         continue
 
     except Exception as ex:
