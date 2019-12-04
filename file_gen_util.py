@@ -2,14 +2,14 @@ import os
 import sys
 
 
-def main(myargs):
-    arrlen = len(myargs)
-    my_dir = myargs[0]
-    image_list = myargs[1]
-    manifest_type = myargs[2]
+def main(my_args):
+    arr_len = len(my_args)
+    my_dir = my_args[0]
+    image_list = my_args[1]
+    manifest_type = my_args[2]
     replace_str = ''
-    if arrlen == 4:
-        replace_str = myargs[3]
+    if arr_len == 4:
+        replace_str = my_args[3]
 
     if not os.path.isfile(my_dir):
         print("File path {} does not exist. Exiting.".format(my_dir))
