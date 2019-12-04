@@ -59,7 +59,6 @@ def main(myargs):
 if __name__ == '__main__':
     if len(sys.argv) < 4:
         print('\nUSAGE:\n    python ' + os.path.basename(
-            __file__) + ' /path/to/upload_dir /path/to/httplinks.csv manifest_type [map | segmentation] '
-              + '[optional: substring_to_replace]')
+            __file__) + ' /path/to/upload_dir /path/to/httplinks.csv manifest_type [optional: substring_to_replace]')
     else:
         main(sys.argv[1:])
