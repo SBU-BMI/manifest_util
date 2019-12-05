@@ -21,10 +21,12 @@ def main():
     # display data
     x = data[bool_series]
     if len(x) == 0:
-        print('No duplicate filenames')
+        print('No duplicates')
     else:
-        print(x)
-        print('DUPLICATE FILENAMES FOUND!!')
+        # print(x)
+        x.to_csv('./duplicates.csv')
+        print('DUPLICATES FOUND!!')
+        print('SEE: duplicates.csv')
 
 
 if __name__ == '__main__':
