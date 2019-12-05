@@ -1,6 +1,26 @@
 import os
 import sys
 import argparse
+import collections
+
+
+to_be_uploaded = []
+
+
+def check_if_duplicates(list_of_elems):
+    # Check if given list contains any duplicates
+    dupe = [item for item, count in collections.Counter(list_of_elems).items() if count > 1]
+    if len(dupe) > 0:
+        print('THE FOLLOWING FILES ARE ATTACHED TO MORE THAN ONE IMAGE!!')
+        for d in dupe:
+            print('  * ' + str(d))  # stringify just in case
+
+
+def check_if_not_found(list_of_elems):
+    if len(list_of_elems) > 0:
+        print('DID NOT FIND!!')
+        for i in list_of_elems:
+            print('  * ' + str(i))  # ditto.
 
 
 def find_row(replace_str, search_term, image_list, manifest_type, f):
@@ -26,8 +46,11 @@ def find_row(replace_str, search_term, image_list, manifest_type, f):
                 # Write to file
                 if manifest_type == 'map':
                     f.write(row[1] + "," + row[2] + "," + row[3] + "," + search_term.strip() + "\n")
-                if manifest_type == 'segmentation':
-                    f.write(search_term.strip() + "," + row[1] + "," + row[2] + "," + row[3])
+                    to_be_uploaded.append(search_term.strip())
+                else:
+                    if manifest_type == 'segmentation':
+                        f.write(search_term.strip() + "," + row[1] + "," + row[2] + "," + row[3].strip())
+                        to_be_uploaded.append(row[3].strip())
                 break
     return found, key
 
@@ -69,7 +92,7 @@ def main(my_args):
         if my_args['file']:
             with open(my_list) as fa:
                 for search_term in fa:
-                    # Ignore blank lines
+                    # skip blank lines
                     if len(search_term.strip()) > 0:
                         found, key = find_row(replace_str, search_term, image_list, manifest_type, f)
                     if not found:
@@ -82,10 +105,11 @@ def main(my_args):
                         not_found.append(key)
         f.close()
 
-        if len(not_found) > 0:
-            print('Did not find:')
-            for i in not_found:
-                print(i)
+        # Check not found
+        check_if_not_found(not_found)
+
+        # Check duplicates
+        check_if_duplicates(to_be_uploaded)
 
     except Exception as ex:
         print(ex)
