@@ -36,7 +36,7 @@ Click the Collections tab, then go to the collection, and there will be a link t
 3) Run the following command, replacing the (4) input parameters with your appropriate information:
 
 ```
-python file_gen_util.py "/path/to/upload_dir" "/path/to/httplinks.csv" "manifest_type" "substring_to_replace" > manifest.csv
+python file_gen_util.py -f "/path/to/myList.list" -dl "/path/to/httplinks.csv" -t "manifest_type"
 ```
 
 
