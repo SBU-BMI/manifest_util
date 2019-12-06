@@ -24,7 +24,7 @@ def check_if_not_found(list_of_elems):
 
 
 def find_row(replace_str, search_term, image_list, manifest_type, f):
-    found = 0
+    found1 = 0
     if replace_str:
         search_term = search_term.replace(replace_str, "")
     # Search httplinks file for item
@@ -34,15 +34,15 @@ def find_row(replace_str, search_term, image_list, manifest_type, f):
 
             row = search_row.strip().split(',')
 
-            key = search_term[:search_term.find(".")].strip()  # Substring to the extension
+            key1 = search_term[:search_term.find(".")].strip()  # Substring to the extension
             # temp = search_row[:search_row.find(".")].strip().split("/")  # Strips the extension and splits to array
 
             temp = row[0].split("/")
             slide_name = temp[len(temp) - 1]
             val = slide_name[:slide_name.find(".")].strip()  # potential value minus the extension
 
-            if key.lower() == val.lower():
-                found = 1
+            if key1.lower() == val.lower():
+                found1 = 1
                 # Write to file
                 if manifest_type == 'map':
                     f.write(row[1] + "," + row[2] + "," + row[3] + "," + search_term.strip() + "\n")
@@ -52,7 +52,7 @@ def find_row(replace_str, search_term, image_list, manifest_type, f):
                         f.write(search_term.strip() + "," + row[1] + "," + row[2] + "," + row[3].strip())
                         to_be_uploaded.append(row[3].strip())
                 break
-    return found, key
+    return found1, key1
 
 
 def main(my_args):
@@ -81,7 +81,7 @@ def main(my_args):
         sys.exit()
 
     try:
-        f = open('manifest.csv', 'w')
+        f = open('manifest1.csv', 'w')
         if manifest_type == 'segmentation':
             f.write('segmentdir,studyid,clinicaltrialsubjectid,imageid\n')
 
@@ -92,6 +92,8 @@ def main(my_args):
         if my_args['file']:
             with open(my_list) as fa:
                 for search_term in fa:
+                    found = False
+                    key = search_term
                     # skip blank lines
                     if len(search_term.strip()) > 0:
                         found, key = find_row(replace_str, search_term, image_list, manifest_type, f)
