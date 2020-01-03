@@ -3,7 +3,6 @@ import sys
 import argparse
 import collections
 
-
 to_be_uploaded = []
 
 
@@ -23,10 +22,11 @@ def check_if_not_found(list_of_elems):
             print('  * ' + str(i))  # ditto.
 
 
-def find_row(replace_str, search_term, image_list, manifest_type, f):
+def find_row(replace_str, search, image_list, manifest_type, f):
     found1 = 0
+    search_term = ""
     if replace_str:
-        search_term = search_term.replace(replace_str, "")
+        search_term = search.replace(replace_str, "")
     # Search httplinks file for item
     with open(image_list) as fb:
         next(fb)  # Skip header row
@@ -45,7 +45,7 @@ def find_row(replace_str, search_term, image_list, manifest_type, f):
                 found1 = 1
                 # Write to file
                 if manifest_type == 'map':
-                    f.write(row[1] + "," + row[2] + "," + row[3] + "," + search_term.strip() + "\n")
+                    f.write(row[1] + "," + row[2] + "," + row[3] + "," + search.strip() + "\n")
                     to_be_uploaded.append(search_term.strip())
                 else:
                     if manifest_type == 'segmentation':
