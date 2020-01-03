@@ -35,7 +35,7 @@ Click the Collections tab, then go to the collection, and there will be a link t
 2) `ls -l | awk '{print $9}' > ~/myList.list`
 3) Run the following command, replacing the (4) input parameters with your appropriate information:
 
-*Note:* If your search-replace string begins with a '-', you must escape it.
+*Note:* If your search-replace string begins with a special character, you must escape it.
 ```
 Example:
 python file_gen_util.py -f myList.list -dl rutgers_lung.csv -t map -s "\-multires"
@@ -59,5 +59,5 @@ python file_gen_util.py -d "/path/to/upload_dir" -dl "/path/to/httplinks.csv" -t
 "map" or "segmentation"
 
 **Parameter:** `substring_to_replace` (optional)<br>
-If there is a part of the filename that needs to be stripped out (for example, file ends in "-test") then pass "-test" as the last argument.<br>
+If there is a part of the filename that needs to be stripped out (for example, file ends in "-test") then pass "\-test" (note the '-' is escaped) as the last argument.<br>
 "-test" will be stripped out of the search string so we can find its match in httplinks.csv
