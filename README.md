@@ -35,9 +35,16 @@ Click the Collections tab, then go to the collection, and there will be a link t
 2) `ls -l | awk '{print $9}' > ~/myList.list`
 3) Run the following command, replacing the (4) input parameters with your appropriate information:
 
+*Note:* If your search-replace string begins with a '-', you must escape it.
+```
+Example:
+python file_gen_util.py -f myList.list -dl rutgers_lung.csv -t map -s "\-multires"
+```
+<!--
 ```
 python file_gen_util.py -f "/path/to/myList.list" -dl "/path/to/httplinks.csv" -t "manifest_type"
 ```
+-->
 
 
 ### By directory
