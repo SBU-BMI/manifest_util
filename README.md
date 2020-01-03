@@ -14,15 +14,17 @@ usage: file_gen_util.py [-h] (-f FILE | -d DIRECTORY) -dl DOWNLOAD -t TYPE
 
 Create manifest file.
 
-optional arguments:
+arguments:
   -h, --help            show this help message and exit
   -f FILE, --file FILE  Path to input file
-  -d DIRECTORY, --directory DIRECTORY
+  -d DIRECTORY, --directory DIRECTORY (optional)
                         Path to input directory
   -dl DOWNLOAD, --download DOWNLOAD
                         Path to downloaded quip file
+  -c COLLECTION, --collection COLLECTION
+                        Collection name
   -t TYPE, --type TYPE  Type of manifest
-  -s STRING, --string STRING
+  -s STRING, --string STRING (optional)
                         Substring to replace
 ```
 
@@ -38,7 +40,7 @@ Click the Collections tab, then go to the collection, and there will be a link t
 *Note:* If your search-replace string begins with a special character, you must escape it.
 ```
 Example:
-python file_gen_util.py -f myList.list -dl rutgers_lung.csv -t map -s "\-multires"
+python file_gen_util.py -f myList.list -dl rutgers_lung.csv -t map -c collection:blah -s "\-multires"
 ```
 <!--
 ```
