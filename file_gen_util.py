@@ -82,8 +82,13 @@ def main(my_args):
         print("File path {} does not exist. Exiting.".format(my_list))
         sys.exit()
 
+    if my_args['output']:
+        filename = my_args['output']
+    else:
+        filename = "manifest1.csv"
+
     try:
-        f = open('manifest1.csv', 'w')
+        f = open(filename, 'w')
         if manifest_type == 'segmentation':
             f.write('segmentdir,studyid,clinicaltrialsubjectid,imageid\n')
 
@@ -130,6 +135,7 @@ if __name__ == '__main__':
     parser.add_argument("-c", "--collection", help="Collection name", required=False, type=str)
     parser.add_argument("-t", "--type", help="Type of manifest", required=True, type=str)
     parser.add_argument("-s", "--string", help="Substring to replace", required=False, type=str)
+    parser.add_argument("-op", "--output", help="Output file name", required=False, type=str)
 
     args = vars(parser.parse_args())
 
