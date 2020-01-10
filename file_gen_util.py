@@ -25,7 +25,7 @@ def check_if_not_found(list_of_elems):
 
 def find_row(replace_str, search, image_list, manifest_type, f, collection=""):
     found1 = 0
-    search_term = ""
+    search_term = search
     if replace_str:
         search_term = search.replace(replace_str, "")
     # Search httplinks file for item
