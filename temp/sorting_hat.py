@@ -27,8 +27,10 @@ def check_if_not_found(list_of_elems):
 def find_row(replace_str, search, image_list, manifest_type, f, collection=""):
     found1 = 0
     search_term = search
-    if replace_str:
-        search_term = search.replace(replace_str, "")
+    if "prediction" in search:
+        search_term = search.replace("prediction-", "")
+    if "color" in search:
+        search_term = search.replace("color-", "")
     # Search httplinks file for item
     with open(image_list) as fb:
         next(fb)  # Skip header row
@@ -55,15 +57,11 @@ def find_row(replace_str, search, image_list, manifest_type, f, collection=""):
                         f.write(search_term.strip() + "," + row[1] + "," + row[2] + "," + row[3].strip())
                         to_be_uploaded.append(row[3].strip())
 
-                tmp_dir = "/data/tkurc/seer-rutgers/new_images_til_results/analysis_results/heatmap_txt/"
-
-                cmd = "cp " + tmp_dir + "color-" + row[3].strip() + "* " + collection.replace(":", "_") + "/"
-                returned_value = subprocess.call(cmd, shell=True)  # returns the exit code in unix
-                # print('returned value:', returned_value)
-
-                cmd = "cp " + tmp_dir + "prediction-" + row[3].strip() + "* " + collection.replace(":", "_") + "/"
+                tmp_dir = "$HOME/Ariel/"
+                cmd = "mv " + tmp_dir + search.rstrip() + " " + collection.replace(":", "_") + "/"
                 returned_value = subprocess.call(cmd, shell=True)
-                # print('returned value:', returned_value)
+                if returned_value != 0:
+                    print('cmd:', cmd)
 
                 break
     return found1, search.rstrip()
