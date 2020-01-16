@@ -5,13 +5,13 @@
 concat_csvs () {
   echo "Help is on the way! :)"
 
+  USER="$1"
+  # Will request password:
+  TOKEN=$(curl -u $USER http://localhost/jwt/token | python -c "import sys, json; print json.load(sys.stdin)['token']")
   # Download SEER:Rutgers:Lung
-  S="http://localhost/csvdownload"
-  wget --user $USER --password $PASS "$S/3"  # TODO: Find alternate! Site too secure! :\
-  mv manifest.csv seer_rutgers_lung.csv
+  curl -H 'Accept: application/json' -H "Authorization: Bearer ${TOKEN}" -o seer_rutgers_lung.csv http://localhost/csvdownload/3
   # Download SEER:Rutgers:Prostate
-  wget --user $USER --password $PASS "$S/4"  # TODO: Find alternate!
-  mv manifest.csv seer_rutgers_prostate.csv
+  curl -H 'Accept: application/json' -H "Authorization: Bearer ${TOKEN}" -o seer_rutgers_prostate.csv http://localhost/csvdownload/4
   cp seer_rutgers_prostate.csv temp.txt
   # Remove first line
   sed '1d' temp.txt > tmpfile; mv tmpfile temp.csv
