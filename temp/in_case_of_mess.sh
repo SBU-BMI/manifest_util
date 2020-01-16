@@ -17,6 +17,7 @@ concat_csvs () {
   sed '1d' temp.txt > tmpfile; mv tmpfile temp.csv
   # Concatenate
   cat seer_rutgers_lung.csv temp.csv > lung_and_prostate.csv
+  # rm "temp.*"
   echo "CONCATENATED CSV: lung_and_prostate.csv"
 }
 concat_csvs
