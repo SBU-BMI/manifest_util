@@ -42,7 +42,9 @@ def find_row(replace_str, search, image_list, manifest_type, f, collection=""):
             slide_name = temp[len(temp) - 1]
             val = slide_name[:slide_name.find(".")].strip()  # potential value minus the extension
 
+            # TODO: If == fails on ALL of them, try 'in'.
             if key1.lower() == val.lower():
+            # if key1.lower() in val.lower():
                 found1 = 1
                 # Write to file
                 if manifest_type == 'map':
