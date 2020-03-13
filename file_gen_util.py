@@ -44,7 +44,7 @@ def find_row(replace_str, search, image_list, manifest_type, f, collection=""):
 
             # TODO: If == fails on ALL of them, try 'in'.
             if key1.lower() == val.lower():
-            # if key1.lower() in val.lower():
+                # if key1.lower() in val.lower():
                 found1 = 1
                 # Write to file
                 if manifest_type == 'map':
@@ -52,7 +52,7 @@ def find_row(replace_str, search, image_list, manifest_type, f, collection=""):
                     to_be_uploaded.append(search_term.strip())
                 else:
                     if manifest_type == 'segmentation':
-                        f.write(search_term.strip() + "," + row[1] + "," + row[2] + "," + row[3].strip())
+                        f.write(search_term.strip() + "," + row[1] + "," + row[2] + "," + row[3].strip() + "\n")
                         to_be_uploaded.append(row[3].strip())
                 break
     return found1, search.rstrip()
