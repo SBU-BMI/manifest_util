@@ -54,6 +54,9 @@ def find_row(replace_str, search, image_list, manifest_type, f, collection=""):
                     if manifest_type == 'segmentation':
                         f.write(search_term.strip() + "," + row[1] + "," + row[2] + "," + row[3].strip() + "\n")
                         to_be_uploaded.append(row[3].strip())
+                    else:
+                        f.write(search.strip() + "," + row[1] + "," + row[2] + "," + row[3] + "\n")
+                        to_be_uploaded.append(search_term.strip())
                 break
     return found1, search.rstrip()
 
@@ -87,7 +90,7 @@ def main(my_args):
     if my_args['output']:
         filename = my_args['output']
     else:
-        filename = "manifest1.csv"
+        filename = "manifest.csv"
 
     try:
         f = open(filename, 'w')
@@ -96,6 +99,9 @@ def main(my_args):
 
         if manifest_type == 'map':
             f.write('collectionname,studyid,clinicaltrialsubjectid,imageid,filename\n')
+        
+        if manifest_type == 'heatmap':
+            f.write('f,s,c,i\n')
 
         not_found = []
         if my_args['file']:
