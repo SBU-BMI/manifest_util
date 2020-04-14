@@ -57,8 +57,10 @@ Example:
 python file_gen_util.py -d "/path/to/upload_dir" -dl "/path/to/httplinks.csv" -t "manifest_type"
 ```
 
-**Parameter:** `manifest_type` <br>
-"map" or "segmentation"
+**Parameter:** `manifest_type`
+- map
+- heatmap
+- segmentation
 
 **Parameter:** `substring_to_replace` (optional)<br>
 If there is a part of the filename that needs to be stripped out (for example, file ends in "-test") then pass "\-test" (note the '-' is escaped) as the last argument.<br>
