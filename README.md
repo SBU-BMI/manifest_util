@@ -12,7 +12,8 @@ segmentations), it scans the directory and uses each filename as a search string
 2.  This program (as well as PathDB) are a work in progress. Updates will be made accordingly.
 
 ## Usage
-```
+
+```bash
 python file_gen_util.py -h
 
 usage: file_gen_util.py [-h] (-f FILE | -d DIRECTORY) -dl DOWNLOAD -t TYPE
@@ -38,27 +39,30 @@ For the first parameter, you may give it either a file containing a list of the 
 
 ## By file
 
-1) Download manifest.csv from PathDB
+1) Download manifest.csv from PathDB.
 
 Click the Collections tab, then scroll down to your collection, and there will be a link that says "download".
 
-2) Run this command in the folder containing your files to be uploaded:
+2) Rename file to, for example, collectionName.csv
 
-```
+3) Run this command in the folder containing your files to be uploaded:
+
+```bash
 ls -l | awk '{print $9}' > ~/myList.list
 ```
 
-3) Run the following command, replacing the (4) input parameters with your appropriate information:
+4) Run the following command, replacing the (4) input parameters with your appropriate information:
 
 **Note:** If your search-replace string begins with a special character, you must escape it.
 
-```
 Example:
+
+```bash
 python file_gen_util.py -f myList.list -dl rutgers_lung.csv -t map -c collection:blah -s "\-multires"
 ```
 
 <!--
-```
+```bash
 python file_gen_util.py -f "/path/to/myList.list" -dl "/path/to/collectionName.csv" -t "manifest_type"
 ```
 -->
@@ -68,7 +72,7 @@ python file_gen_util.py -f "/path/to/myList.list" -dl "/path/to/collectionName.c
 
 Example:
 
-```
+```bash
 python file_gen_util.py -d "/path/to/upload_dir" -dl "/path/to/collectionName.csv" -t "manifest_type"
 ```
 
